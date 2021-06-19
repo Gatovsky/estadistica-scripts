@@ -1,0 +1,9 @@
+##ignore 
+venv/
+__pycache__/
+.idea/
+.vscod##ignore 
+venv/
+__pycache__/
+.idea/
+.vscode
