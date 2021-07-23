@@ -1,13 +1,41 @@
 import random
+import csv
+
 
 
 def genAltura(fileAlturas, numeroFilas):
     with open(fileAlturas, 'w+') as file:
-        file.write('Alturas\n')
-        data = '{:.2f}\n'
+        file.write('números\n')
+        data = '{:.0f}\n'
         for rand in range(numeroFilas):
-            alturas = (random.uniform(1.48, 2.00))
+            alturas = (random.uniform(1, 50))
             file.write(data.format(alturas))
+
+
+def aleatorio_unico(fileUnico, numeroFilas):
+    with open(fileUnico, 'w+') as file:
+        """file.write('números\n')
+        lista_numbers = list(range(1, numeroFilas+1))
+        random.shuffle(lista_numbers) # revuelve la lista
+        for i in lista_numbers:
+            file.write(str(i)+"\n")"""
+        lista_numeros = [random.randint(1, numeroFilas)] # lista_numeros[0]
+        i = 1
+        while i < numeroFilas:
+            x = random.randint(1, numeroFilas) # es decir (1, 50)
+            if x not in lista_numeros:
+                lista_numeros.append(x)
+                i += 1
+        for n in lista_numeros:
+            file.write(str(n)+"\n")
+
+
+def barajar(filecsv):
+    with open(filecsv, 'w+', newline='') as csvfile:
+        file = csv.reader(csvfile, delimiter=' ', quotechar='|')
+        for row in range(file):
+            print(', '.join(row))
+
 
 
 def genPeso(filePeso, numeroFilas):
@@ -58,3 +86,4 @@ def agrupar(fileToGroup, groupData):
                 print(k.rstrip(), dict_altura[k])
                 f_ac += dict_altura[k]
                 groupfile.writelines(k.rstrip() + '\t' + str(dict_altura[k]) + '\t' + str(f_ac) + '\n')
+

@@ -1,4 +1,4 @@
-from genData import genAltura, genPeso, agrupar, genxy
+from genData import genAltura, genPeso, agrupar, genxy, aleatorio_unico, barajar
 
 
 def menu(self):
@@ -42,6 +42,21 @@ def menu(self):
         except ValueError:
             print(ValueError, ":", numeroFilas, 'no es un número')
 
+    elif self == 5:
+        fileunico = 'fileUnico.csv'
+        try:
+            numeroFilas = input('escribe un número  --> ')
+            numeroFilas = int(numeroFilas)
+
+            aleatorio_unico(fileunico, numeroFilas)
+
+        except ValueError:
+            print(ValueError, ":", numeroFilas, 'no es un número')
+
+    elif self == 6:
+        filecsv = 'Archivo.csv'
+        barajar(filecsv)
+
 
 def main():
 
@@ -53,10 +68,12 @@ def main():
                         "2 - Generar pesos\n"
                         "3 - Agrupar alturas\n"
                         "4 - Generar X & Y datos\n"
-                        "5 - salir\n"
-                        ">   ")
+                        "5 - Genera números aleatorios únicos\n"
+                        "6 - Barajar\n"
+                        "7 - Salir\n"
+                        "-->  ")
             sel = int(sel)
-            if sel == 5: break
+            if sel == 7: break
             menu(sel)
         except ValueError:
             print(ValueError, ":", sel, "no es un valor numérico")
